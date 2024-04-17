@@ -3,7 +3,7 @@ Section: libs
 Priority: optional
 Maintainer: Jan Dittberner <jandd@debian.org>
 Uploaders: Martin Pitt <mpitt@debian.org>
-Standards-Version: 4.4.1
+Standards-Version: 4.6.0
 Build-Depends: autoconf (>=2.61),
                automake (>= 1.10),
                chrpath,
@@ -37,6 +37,7 @@ Description: pro-active password checker library
 
 Package: libcrack2-udeb
 Package-Type: udeb
+Build-Profiles: <!noudeb>
 Section: debian-installer
 Architecture: any
 Pre-Depends: ${misc:Pre-Depends}

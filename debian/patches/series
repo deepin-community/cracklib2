@@ -3,3 +3,5 @@ libcrack2-error-safer-check-variant.patch
 improve_test_737040.patch
 CVE-2016-6318.patch
 overflow-processing-long-words.patch
+fix-musl-linux-any-build
+python3.12-support.patch

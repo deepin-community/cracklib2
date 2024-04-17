@@ -1,0 +1,77 @@
+Description: Fix build against Python 3.12
+ The build-time test suite still used the obsolete assertEquals function -
+ which was obsolete and got dropped from Python 3.12. Use the replacement
+ instead so we can build with Python 3.12.
+Author: Olivier Gayot <olivier.gayot@canonical.com>
+Bug-Ubuntu: https://launchpad.net/bugs/2045290
+Bug-Debian: https://bugs.debian.org/1055571
+Forwarded: https://github.com/cracklib/cracklib/pull/75
+Last-Update: 2023-11-30
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/python/test_cracklib.py
++++ b/python/test_cracklib.py
+@@ -76,41 +76,41 @@
+     def test_simple_lower(self):
+         for passwd in ['t' * i for i in range(
+                 cracklib.MIN_LENGTH - cracklib.LOW_CREDIT)]:
+-            self.assertEquals(
++            self.assertEqual(
+                 1, cracklib.simple(passwd),
+                 'password {0} should be detected as too simple'.format(
+                     passwd))
+-        self.assertEquals(0, cracklib.simple(
++        self.assertEqual(0, cracklib.simple(
+             't' * (cracklib.MIN_LENGTH - cracklib.LOW_CREDIT)))
+ 
+     def test_simple_upper(self):
+         for passwd in ['T' * i for i in range(
+                 cracklib.MIN_LENGTH - cracklib.UP_CREDIT)]:
+-            self.assertEquals(
++            self.assertEqual(
+                 1, cracklib.simple(passwd),
+                 'password {0} should be detected as too simple'.format(
+                     passwd))
+-        self.assertEquals(0, cracklib.simple(
++        self.assertEqual(0, cracklib.simple(
+             'T' * (cracklib.MIN_LENGTH - cracklib.UP_CREDIT)))
+ 
+     def test_simple_digit(self):
+         for passwd in ['1' * i for i in range(
+                 cracklib.MIN_LENGTH - cracklib.DIG_CREDIT)]:
+-            self.assertEquals(
++            self.assertEqual(
+                 1, cracklib.simple(passwd),
+                 'password {0} should be detected as too simple'.format(
+                     passwd))
+-        self.assertEquals(0, cracklib.simple(
++        self.assertEqual(0, cracklib.simple(
+             '1' * (cracklib.MIN_LENGTH - cracklib.DIG_CREDIT)))
+ 
+     def test_simple_other(self):
+         for passwd in ['#' * i for i in range(
+                 cracklib.MIN_LENGTH - cracklib.OTH_CREDIT)]:
+-            self.assertEquals(
++            self.assertEqual(
+                 1, cracklib.simple(passwd),
+                 'password {0} should be detected as too simple'.format(
+                     passwd))
+-        self.assertEquals(0, cracklib.simple(
++        self.assertEqual(0, cracklib.simple(
+             '#' * (cracklib.MIN_LENGTH - cracklib.OTH_CREDIT)))
+ 
+     def test_simple_combinations(self):
+@@ -119,11 +119,11 @@
+                 cracklib.MIN_LENGTH -
+                 cracklib.LOW_CREDIT -
+                 cracklib.OTH_CREDIT)]:
+-            self.assertEquals(
++            self.assertEqual(
+                 1, cracklib.simple(passwd),
+                 'password {0} should be detected as too simple'.format(
+                     passwd))
+-        self.assertEquals(0, cracklib.simple(
++        self.assertEqual(0, cracklib.simple(
+             testset[:(cracklib.MIN_LENGTH - cracklib.LOW_CREDIT -
+                       cracklib.OTH_CREDIT)]))
+ 

@@ -1,3 +1,36 @@
+cracklib2 (2.9.6-5.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix test failures with Python 3.12 (Olivier Gayot). Closes: #1055571.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 07 Dec 2023 08:45:06 +0100
+
+cracklib2 (2.9.6-5) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+  * Update standards version to 4.6.0, no changes needed.
+
+  [ Jan Dittberner ]
+  * Fix "support the noudeb build profile" by adding Build-Profiles to
+    libcrack2-udeb in debian/control, thanks to Helmut Grohne (Closes:
+    #1024933)
+  * Fix "/etc/cron.daily/cracklib-runtime: Please drop/replace the cron
+    job" by dropping the daily cron job and changing the man page in
+    debian/update-cracklib.8 (Closes: #924074)
+
+ -- Jan Dittberner <jandd@debian.org>  Tue, 29 Nov 2022 08:26:33 +0100
+
+cracklib2 (2.9.6-4) unstable; urgency=medium
+
+  * Thanks to Boyuan Yang, Peter Michael Green and Helmut Grohne for the
+    NMUs
+  * Fix "cracklib2 FTBFS on musl: gettext misdetected" by adding a patch to
+    require gettext >= 0.19.8 from Helmut Grohne (Closes: #1008711)
+
+ -- Jan Dittberner <jandd@debian.org>  Sat, 09 Apr 2022 14:32:41 +0200
+
 cracklib2 (2.9.6-3.4) unstable; urgency=medium
 
   * Non-maintainer upload.
